@@ -7,8 +7,12 @@ from typing import List, Dict, Iterator
 from utils import jsonl
 import torchfile
 
-pwkp_data_path = os.path.expanduser('/data/data-simplification/wikismall/')
-
+# print(os.getcwd())
+# print(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
+file_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+pwkp_data_path = os.path.join(file_dir, "data/data-simplification/wikismall/")
+# pwkp_data_path = os.path.expanduser('./data/data-simplification/wikismall/')
+print(pwkp_data_path)
 def transform(path: str) -> List[Dict]:
     source_datas = open(path+'.src', 'r').read().strip().split('\n')
     target_datas = open(path+'.dst', 'r').read().strip().split('\n')
